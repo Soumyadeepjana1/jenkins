@@ -1,0 +1,30 @@
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Check Java and Maven') {
+            steps {
+                sh 'java -version'
+                sh 'mvn -version'
+            }
+        }
+
+        stage('Build Maven Project') {
+            steps {
+                dir('maven-jenkins') {
+                    sh 'mvn clean package'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Maven build successful!'
+        }
+        failure {
+            echo 'Maven build failed!'
+        }
+    }
+}
