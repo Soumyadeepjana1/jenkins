@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    stages {
+        stage ('user info') {
+            steps {
+                sh 'whoami'
+                sh 'hostname'
+                sh 'date'
+            }
+        }
+        
+        stage ('system info'){
+            steps {
+                sh 'uname -r'
+                sh 'uptime'
+                sh 'free -h'
+                
+            }
+        }
+        
+        stage ('disk info') {
+            steps {
+                sh 'df -h'
+                sh 'pwd'
+            }
+        }
+        }
+    }
