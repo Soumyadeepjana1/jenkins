@@ -1,0 +1,16 @@
+
+pipeline {
+    agent any
+
+    stages {
+        stage('learn linux') {
+            steps {
+                sh 'whoami'
+                sh 'pwd'
+                sh 'mkdir -p hello'
+                sh 'ls -la'
+            }
+        }
+    }
+}
+
